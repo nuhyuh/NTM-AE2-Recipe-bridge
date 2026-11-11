@@ -1,0 +1,47 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="MIT"
+
+[[mods]]
+modId="ntm_ae2_recipes"
+version="${version}"
+displayName="NTM AE2 Recipe Switcher"
+description='''
+Lets an AE2 pattern provider select the recipe of an NTM Continuum machine
+(chemical plant, assembly machine, factories, ...) by pushing a pattern.
+'''
+
+[[dependencies.ntm_ae2_recipes]]
+modId="neoforge"
+type="required"
+versionRange="[21.1,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.ntm_ae2_recipes]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.1,1.22)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.ntm_ae2_recipes]]
+modId="ae2"
+type="required"
+versionRange="[19,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.ntm_ae2_recipes]]
+modId="hbm"
+type="required"
+versionRange="[0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.ntm_ae2_recipes]]
+modId="golemcore"
+type="required"
+versionRange="[0,)"
+ordering="AFTER"
+side="BOTH"

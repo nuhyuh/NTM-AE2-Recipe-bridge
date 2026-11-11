@@ -1,0 +1,47 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'net.neoforged.moddev' version '2.0.148'
+}
+
+group = 'dev.ntmae2'
+version = '1.2.0'
+base { archivesName = 'ntm-ae2-recipe-switch-1.21' }
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+repositories {
+    mavenCentral()
+    // Drop the jars into ./libs, named exactly:
+    //   ae2-1.0.jar        (Applied Energistics 2, 1.21.1 NeoForge)
+    //   hbm-1.0.jar        (NTM Continuum, 1.21.1 NeoForge)
+    //   golemcore-1.0.jar  (Golem Core, 1.21.1 NeoForge)
+    flatDir { dir 'libs' }
+}
+
+neoForge {
+    version = '21.1.248'
+
+    runs {
+        client { client() }
+        server { server() }
+        configureEach {
+            systemProperty 'forge.logging.console.level', 'debug'
+        }
+    }
+
+    mods {
+        ntm_ae2_recipes { sourceSet sourceSets.main }
+    }
+}
+
+dependencies {
+    implementation(fileTree("libs") { include("*.jar") })
+}
+
+tasks.named('processResources') {
+    inputs.property 'version', project.version
+    filesMatching('META-INF/neoforge.mods.toml') { expand 'version': project.version }
+}
+
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
