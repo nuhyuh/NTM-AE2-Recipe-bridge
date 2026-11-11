@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'dev.ntmae2'
-version = '1.2.0'
+version = '1.0.0'
 base { archivesName = 'ntm-ae2-recipe-switch-1.21' }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
